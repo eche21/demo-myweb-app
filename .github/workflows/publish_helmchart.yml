@@ -33,13 +33,14 @@ jobs:
     - name: Create gh-page branch
       run: | 
            git switch --orphan gh-pages
+           git push -u origin pages
     # - name: Configure git repo 
     #   run: |
     #      git config user.email "${{ secrets.RELEASE_GITHUB_EMAIL }}"
     #      git config user.name "${{ secrets.RELEASE_GITHUB_USER }}"     
-    - name: Publish on GitHub Pages
-      uses: ftnext/action-push-ghpages@v1.0.0
-      with:
-       build_dir: charts
-       github_token: ${{ secrets.PATOKEN}}       
+    # - name: Publish on GitHub Pages
+    #   uses: ftnext/action-push-ghpages@v1.0.0
+    #   with:
+    #    build_dir: charts
+    #    github_token: ${{ secrets.PATOKEN}}       
 
