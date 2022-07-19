@@ -14,7 +14,7 @@ jobs:
     - name: Create index file
       run: helm repo index $GITHUB_WORKSPACE/charts  
 
-    - name: Create gh-pages branches
+    - name: Create empty gh-pages branches
       run: git switch --orphan gh-pages
     # - name: check content of charts
     #   run: |
