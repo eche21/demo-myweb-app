@@ -16,6 +16,6 @@ jobs:
 
     - name: Create empty gh-pages branches
       run: |
-        git switch --orphan gh-pages
-        git push -u origin gh-pages
+        git checkout --orphan gh-pages
+        
 
