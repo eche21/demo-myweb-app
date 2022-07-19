@@ -16,6 +16,7 @@ jobs:
 
     - name: Create empty gh-pages branches
       run: git switch --orphan gh-pages
+
     - name: Create index file
       run: helm repo index $GITHUB_WORKSPACE/charts  
 
@@ -37,4 +38,4 @@ jobs:
       uses: ftnext/action-push-ghpages@v1.0.0
       with:
        build_dir: charts
-       github_token: ${{ secrets.PAT }}
+       github_token: ${{ secrets.PATOKEN}}
