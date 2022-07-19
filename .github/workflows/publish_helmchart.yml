@@ -37,7 +37,7 @@ jobs:
     - name: Create gh-page branch
       run: | 
            git switch --orphan gh-pages
-           git push -u origin pages --force
+           git push -f origin pages 
     # - name: Configure git repo 
     #   run: |
     #      git config user.email "${{ secrets.RELEASE_GITHUB_EMAIL }}"
