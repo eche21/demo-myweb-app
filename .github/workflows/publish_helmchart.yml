@@ -17,25 +17,3 @@ jobs:
     - name: Create empty gh-pages branches
       run: git switch --orphan gh-pages
 
-    - name: Create index file
-      run: helm repo index $GITHUB_WORKSPACE/charts  
-
-    - name: check content of charts
-      run: |
-       cd charts
-       ls
-   #- name: Delete remote branch
-    #   run: git push origin --delete gh-pages   
-    # - name: Create gh-page branch
-    #  if: always()
-    #   run: | 
-    #       git switch --orphan gh-pages
-    # - name: Configure git repo 
-    #   run: |
-    #      git config user.email "${{ secrets.RELEASE_GITHUB_EMAIL }}"
-    #      git config user.name "${{ secrets.RELEASE_GITHUB_USER }}"     
-    - name: Publish on GitHub Pages
-      uses: ftnext/action-push-ghpages@v1.0.0
-      with:
-       build_dir: charts
-       github_token: ${{ secrets.PATOKEN}}
