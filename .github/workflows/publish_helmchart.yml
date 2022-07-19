@@ -1,0 +1,34 @@
+name: Helm Publish
+
+on:
+  push:
+    branches: [ chehelm ] 
+
+    paths-ignore:
+      - README.md
+jobs:
+  publish-helmchart:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create index file
+      run: helm repo index $GITHUB_WORKSPACE/charts  
+
+    - name: Create gh-pages branches
+      run: git switch --orphan gh-pages
+    # - name: check content of charts
+    #   run: |
+    #    cd charts
+    #    ls
+    # - name: Configure user
+    #   run: |
+    #      git config user.email "${{ secrets.EMAIL }}"
+    #      git config user.name "${{ secrets.USER }}"   
+        #  git pull origin gh-pages  
+        #  git add $GITHUB_WORKSPACE/charts
+        #  git commit -m "ESLint fixes" $GITHUB_WORKSPACE/charts
+    # - name: Publish on GitHub Pages
+    #   uses: ftnext/action-push-ghpages@v1.0.0
+    #   with:
+    #    build_dir: charts
+    #    github_token: ${{ secrets.PAT }}
