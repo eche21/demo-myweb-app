@@ -29,9 +29,13 @@ jobs:
        cd charts
        ls
 
-    - name: Publish on GitHub Pages
-      uses: ftnext/action-push-ghpages@v1.0.0
+    # - name: Publish on GitHub Pages
+    #   uses: ftnext/action-push-ghpages@v1.0.0
+    #   with:
+    #    build_dir: charts
+    #    github_token: ${{ secrets.PATOKEN}}       
+    - name: Publish on Github Pages
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-       build_dir: charts
-       github_token: ${{ secrets.PATOKEN}}       
-
+        branch: gh-pages
+        folder: charts
