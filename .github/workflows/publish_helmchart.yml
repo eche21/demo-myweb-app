@@ -11,12 +11,40 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Configure git repo 
+    # - name: Configure git repo 
+    #   run: |
+    #      git config user.email "${{ secrets.EMAIL }}"
+    #      git config user.name "${{ secrets.USER }}"     
+    # - name: Create gh-page branch
+    #   run: | 
+    #        git switch --orphan gh-pages1
+    #        git commit --allow-empty -m "Initial commit"
+    #        git push -u origin gh-pages1
+    - name: Create charts directory
       run: |
-         git config user.email "${{ secrets.EMAIL }}"
-         git config user.name "${{ secrets.USER }}"     
-    - name: Create gh-page branch
-      run: | 
-           git switch --orphan gh-pages1
-           git commit --allow-empty -m "Initial commit"
-           git push -u origin gh-pages1
+        pwd
+        mkdir charts
+        ls
+    - name: copy helm-charts to charts folder
+      run: |
+        cp -a $GITHUB_WORKSPACE/democharts/*.tgz  $GITHUB_WORKSPACE/charts 
+        cp -a $GITHUB_WORKSPACE/democharts/README.md  $GITHUB_WORKSPACE/charts    
+
+    - name: Create index file
+      run: helm repo index $GITHUB_WORKSPACE/charts  
+
+    - name: check content of charts
+      run: |
+       cd charts
+       ls
+
+    # - name: Publish on GitHub Pages
+    #   uses: ftnext/action-push-ghpages@v1.0.0
+    #   with:
+    #    build_dir: charts
+    #    github_token: ${{ secrets.PATOKEN}}       
+    - name: Publish on Github Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages1
+        folder: charts    
