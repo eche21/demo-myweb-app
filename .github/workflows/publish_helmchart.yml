@@ -14,3 +14,5 @@ jobs:
     - name: Create gh-page branch
       run: | 
            git switch --orphan gh-pages1
+           git commit --allow-empty -m "Initial commit"
+           git push -u origin gh-pages1
