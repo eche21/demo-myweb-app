@@ -44,10 +44,10 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
 
-    # - name: Accessing ECR repo and authenticate helm client
-    #   env:
-    #       ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-    #       ECR_REPOSITORY: demochartrepo
+    - name: Accessing ECR repo and authenticate helm client
+      env:
+           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+           ECR_REPOSITORY: demochartrepo
     #   run : |
     #     aws ecr get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}
     #     helm chart save . $ECR_REGISTRY/$ECR_REPOSITORY:charts
