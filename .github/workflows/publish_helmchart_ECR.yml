@@ -50,6 +50,8 @@ jobs:
            ECR_REPOSITORY: demochartrepo
       run : |
          aws ecr get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}
-         helm  save . charts
-         helm  save . $ECR_REGISTRY/$ECR_REPOSITORY:charts
-    #     helm push $ECR_REGISTRY/$ECR_REPOSITORY:charts
+
+         helm push $ECR_REGISTRY/$ECR_REPOSITORY:charts
+
+        # helm  save . charts
+        #  helm  save . $ECR_REGISTRY/$ECR_REPOSITORY:charts
