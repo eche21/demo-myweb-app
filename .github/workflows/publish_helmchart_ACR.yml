@@ -12,6 +12,7 @@ env:
   ACR_REGISTRY: regscalecontainerregistry
   ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
   ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+  ACR_TOKEN: ${{ secrets.ACR_TOKEN }}
   ACR_SERVER: regscalecontainerregistry.azurecr.io
 jobs:
   push_helm_chart_to_ECR:
@@ -33,7 +34,7 @@ jobs:
 
       - name: authenticate helm client
         run: |
-          echo ${{ env.ACR_PASSWORD }} | helm registry login ${{ env.ACR_SERVER }} --username ${{ env.ACR_PASSWORD }} --password-stdin
+          echo ${{ env.ACR_TOKEN }} | helm registry login ${{ env.ACR_SERVER }} --username ${{ env.ACR_USERNAME }} --password-stdin
       #   run : az acr login-password --region us-east-1 | helm registry login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}
     
     # - name: helm push  to ECR
