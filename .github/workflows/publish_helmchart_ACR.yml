@@ -1,0 +1,27 @@
+name: Helm Publish  To ACR
+
+on:
+  push:
+    branches: [ echehelm ] 
+
+jobs:
+  push_helm_chart_to_ECR:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: 'regscalecontainerregistry.azurecr.io' # default: index.docker.io
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+
+    # - name: Accessing ECR repo and authenticate helm client
+    #   env:
+    #       ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+    #   run : aws ecr get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}
+    
+    # - name: helm push  to ECR
+    #   run:  helm push $GITHUB_WORKSPACE/democharts/*.tgz oci://${{ steps.login-ecr.outputs.registry }}/
