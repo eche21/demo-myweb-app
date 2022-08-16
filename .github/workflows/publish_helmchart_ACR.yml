@@ -35,6 +35,6 @@ jobs:
         run: |
             helm registry login ${{ env.ACR_SERVER }} --username ${{ env.ACR_TOKEN }} --password ${{ env.ACR_HELM_PASSWORD }}    
 
-      # - name: helm push to ACR
-      #   run: |
-      #       helm push $GITHUB_WORKSPACE/democharts/*.tgz oci://${{ env.ACR_SERVER }}     
+      - name: helm push to ACR
+        run: |
+             helm push $GITHUB_WORKSPACE/democharts/*.tgz oci://${{ env.ACR_SERVER }}/demo     
