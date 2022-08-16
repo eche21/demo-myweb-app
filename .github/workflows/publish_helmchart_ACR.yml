@@ -6,16 +6,16 @@ on:
     
 
 env:
-  HELM_EXPERIMENTAL_OCI: 1
-  HELM_VERSION_TO_INSTALL: latest
-  ACR_NAME: regscalecontainerregistry
-  ACR_REPO_NAME: helmdemo/vote-app
-  ACR_REGISTRY: regscalecontainerregistry
-  ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
-  ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
-  ACR_TOKEN: ${{ secrets.ACR_TOKEN }}
+  # HELM_EXPERIMENTAL_OCI: 1
+  # HELM_VERSION_TO_INSTALL: latest
+  # ACR_NAME: regscalecontainerregistry
+  # ACR_REPO_NAME: helmdemo/vote-app
+  # ACR_REGISTRY: regscalecontainerregistry
+  # ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
+  # ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+  # ACR_TOKEN: ${{ secrets.ACR_TOKEN }}
   ACR_SERVER: regscalecontainerregistry.azurecr.io
-  ACR_HELM_PASSWORD: ${{ secrets.ACR_HELM_PASSWORD }}
+  # ACR_HELM_PASSWORD: ${{ secrets.ACR_HELM_PASSWORD }}
 jobs:
   push_helm_chart_to_ACR:
     runs-on: ubuntu-latest
