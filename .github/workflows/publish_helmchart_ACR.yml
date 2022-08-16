@@ -33,7 +33,7 @@ jobs:
 
       - name: authenticate helm client
         run: |
-            echo ${{ env.ACR_HELM_PASSWORD }}  helm registry login ${{ env.ACR_SERVER }} --username ${{ env.ACR_TOKEN }} --password-stdin    
+            helm registry login ${{ env.ACR_SERVER }} --username ${{ env.ACR_TOKEN }} --password ${{ env.ACR_HELM_PASSWORD }}    
         
       #    echo ${{ env.ACR_TOKEN }} | helm registry login ${{ env.ACR_SERVER }} --username ${{ env.ACR_USERNAME }} --password-stdin
       #   run : az acr login-password --region us-east-1 | helm registry login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}
