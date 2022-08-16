@@ -24,25 +24,17 @@ jobs:
       - uses: actions/checkout@v2
         name: checkout repo
       
-      - uses: azure/docker-login@v1
-        id: login-acr
-        with:
-          login-server: 'regscalecontainerregistry.azurecr.io' # default: index.docker.io
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
+      # - uses: azure/docker-login@v1
+      #   id: login-acr
+      #   with:
+      #     login-server: 'regscalecontainerregistry.azurecr.io' # default: index.docker.io
+      #     username: ${{ secrets.ACR_USERNAME }}
+      #     password: ${{ secrets.ACR_PASSWORD }}
 
       - name: authenticate helm client
         run: |
             helm registry login ${{ env.ACR_SERVER }} --username ${{ env.ACR_TOKEN }} --password ${{ env.ACR_HELM_PASSWORD }}    
 
-      - name: helm push to ACR
-        run: |
-            helm push $GITHUB_WORKSPACE/democharts/*.tgz oci://${{ env.ACR_SERVER }}     
-      #    echo ${{ env.ACR_TOKEN }} | helm registry login ${{ env.ACR_SERVER }} --username ${{ env.ACR_USERNAME }} --password-stdin
-      #   run : az acr login-password --region us-east-1 | helm registry login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}
-    
-      # - name: helm push  to ECR
-      #   run: az acr helm push $GITHUB_WORKSPACE/democharts/*.tgz  -n regscalecontainerregistry #oci://${{ env.ACR_SERVER }}/helm
-# - name: login to acr using helm
-#   run: |
-#     echo $ | helm registry login $.azurecr.io --username $ --password-stdin 
+      # - name: helm push to ACR
+      #   run: |
+      #       helm push $GITHUB_WORKSPACE/democharts/*.tgz oci://${{ env.ACR_SERVER }}     
