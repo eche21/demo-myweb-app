@@ -2,7 +2,7 @@ name: Publish Azure Helm Chart To ACR
 
 on:
   push:
-    branches: [ echehelm ] 
+    branches: [ none ] 
 
 env:
   HELM_EXPERIMENTAL_OCI: 1
