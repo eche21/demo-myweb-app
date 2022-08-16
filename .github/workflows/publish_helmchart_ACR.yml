@@ -37,7 +37,7 @@ jobs:
 
       - name: helm push to ACR
         run: |
-            helm push $GITHUB_WORKSPACE/democharts/*.tgz oci://${{ env.ACR_SERVER }}/democharts     
+            helm push $GITHUB_WORKSPACE/democharts/*.tgz oci://${{ env.ACR_SERVER }}     
       #    echo ${{ env.ACR_TOKEN }} | helm registry login ${{ env.ACR_SERVER }} --username ${{ env.ACR_USERNAME }} --password-stdin
       #   run : az acr login-password --region us-east-1 | helm registry login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}
     
