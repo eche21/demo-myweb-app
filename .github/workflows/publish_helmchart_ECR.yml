@@ -2,7 +2,7 @@ name: Helm Publish  To ECR
 
 on:
   push:
-    branches: [ echehelm ] 
+    branches: [ none ] 
 
 jobs:
   push_helm_chart_to_ECR:
@@ -30,4 +30,5 @@ jobs:
     
     - name: helm push  to ECR
       run:  helm push $GITHUB_WORKSPACE/democharts/*.tgz oci://${{ steps.login-ecr.outputs.registry }}/
+
 
