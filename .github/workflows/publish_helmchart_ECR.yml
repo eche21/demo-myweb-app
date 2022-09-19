@@ -2,7 +2,7 @@ name: Helm Publish  To ECR
 
 on:
   push:
-    branches: [ none ] 
+    branches: [ echehelm ] 
 
 jobs:
   push_helm_chart_to_ECR:
